@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#Creating ssh-key with arguments -i -p -b
-ssh-keygen -b 4096 -f ~/.ssh/school -N betty
+#Creating ssh-key with arguments -f -N -b
+ssh-keygen -b 4096 -f school -N betty
 
