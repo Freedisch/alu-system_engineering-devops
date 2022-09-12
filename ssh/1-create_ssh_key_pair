@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Creating ssh-key with arguments -i -p -b
+ssh -i ~/.ssh/school -b 4096 -p betty
+
