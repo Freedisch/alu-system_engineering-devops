@@ -1,3 +1,4 @@
+#Puppet is config file for ssh files
 class { 'ssh':
   storeconfigs_enabled => false,
   server_options => {
