@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-#resdirecte to pages not found
+#resdirecte pages not found
+sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo servicde nginx start
-pages = "\\\trewrite ^/redirect_me https://voiranime.com/ permanent"
-sudo sed -i "53i  $pages" /etc/nginx/sites-available/default
+sudo service nginx start
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+sudo sed -i "55i $newlines" /etc/nginx/sites-available/default
 sudo service nginx restart
 sudo service nginx reload
