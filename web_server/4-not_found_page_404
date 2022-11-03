@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+sudo apt-get -y install nginx
+sudo servicde nginx start
+pages = "\\\trewrite ^/redirect_me https://voiranime.com/ permanent"
+sudo sed -i "53i  $pages" /etc/nginx/sites-available/default
+sudo service nginx restart
+sudo service nginx reload
