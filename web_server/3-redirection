@@ -2,7 +2,7 @@
 #Redirecting pages
 sudo apt-get -y install nginx
 sudo service nginx start
-pages = "\\\trewrite 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t"
+pages="\\\trewrite 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t"
 sudo sed -i "55i  $pages" /etc/nginx/sites-available/default
 sudo service nginx restart
 sudo service nginx reload
