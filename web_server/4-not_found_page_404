@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#resdirecte to pages not found
 sudo apt-get -y install nginx
 sudo servicde nginx start
 pages = "\\\trewrite ^/redirect_me https://voiranime.com/ permanent"
