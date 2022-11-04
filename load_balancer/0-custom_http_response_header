@@ -3,10 +3,26 @@
 # sudo apt-get -y update
 # sudo apt-get -y upgrade
 # sudo apt-get -y install nginx
-sudo service nginx start
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
-sudo sed -i "55i $newlines" /etc/nginx/sites-available/default
-sudo sed -i "52i\add_header X-Served-By $HOSTNAME always;" /etc/nginx/sites-available/default
+# sudo service nginx start
+# echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+# newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+# sudo sed -i "55i $newlines" /etc/nginx/sites-available/default
+# sudo sed -i "52i\add_header X-Served-By $HOSTNAME always;" /etc/nginx/sites-available/default
+# sudo service nginx restart
+
+# sudo apt update -y
+# sudo apt install nginx -y
+host_name="$HOSTNAME"
+new_config=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+               root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        add_header X-Served-By $host_name;
+}
+"
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
+echo "$new_config" > /etc/nginx/sites-available/default
 sudo service nginx restart
-sudo service nginx reload
