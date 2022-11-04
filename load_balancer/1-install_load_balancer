@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Installing a load balancer
-apt-get -y install --no-install-recommends software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.0
-apt-get -y update
-apt-get -y install haproxy=2.0.\*
+sudo apt-get -y install --no-install-recommends software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
+sudo apt-get -y update
+sudo apt-get -y install haproxy=2.0.\*
 
 cat >> /etc/haproxy/haproxy.cfg << EOF
 frontend Local_Server
@@ -17,4 +17,4 @@ backend Web_Servers
         server web-02 54.210.241.71:80 check
 EOF
 
-service haproxy restart
+sudo service haproxy restart
