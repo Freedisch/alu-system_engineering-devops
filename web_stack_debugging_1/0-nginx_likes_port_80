@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Changing port number
+service nginx stop
+pkil nginx
+service nginx start
