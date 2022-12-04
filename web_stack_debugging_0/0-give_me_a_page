@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Changing apache port number
+service apache2 restart
